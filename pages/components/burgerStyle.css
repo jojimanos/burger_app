@@ -1,0 +1,9 @@
+.lettuce{
+    background-image: url(../assets/images/lettuce.jpg);
+    background-size: 300px;
+    height: 27px;
+    width: 100%;
+    display: table;
+    background-repeat: no-repeat;
+    background-position: center;
+}
