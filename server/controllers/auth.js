@@ -168,82 +168,82 @@ exports.adminMiddleware = (req, res, next) => {
   });
 };
 
-exports.forgotPassword = (req, res) => {
-  const { email } = req.body
-  // check if user exists with that email
-  User.findOne({ email }).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: 'User with that email does not exist'
-      });
-    }
-    // generate token and email to user 
-    const token = jwt.sign({ name: user.name }, process.env.JWT_RESET_PASSWORD, { expiresIn: '10m' })
-    // send email
-    const forgot = forgotPasswordEmail(email, token)
-
-    // populate the db > user > resetPasswordLink
-    return user.updateOne({ resetPasswordLink: token }, (err, success) => {
-      if (err) {
-        return res.status(400).json({
-          error: 'Password reset failed. Try later.'
-        })
-      }
-      sendgrid
-        .send(forgot)
-        .then((response) => {
-          console.log(response[0].statusCode)
-          console.log(response[0].headers)
-          res.json({
-            message: `Email has been sent to ${email}, Follow the instructions to reset your password`
-          })
-        })
-        .catch((error) => {
-          console.error(error)
-          res.json({
-            message: `We could not verify your email. Please try again`
-          })
-        })
-    })
-  })
-};
-
-exports.resetPassword = (req, res) => {
-  const { resetPasswordLink, newPassword } = req.body
-  if (resetPasswordLink) {
-    // check for expiry
-    jwt.verify(resetPasswordLink, process.env.JWT_RESET_PASSWORD, (err, success) => {
-      if (err) {
-        return res.status(400).json({
-          error: 'Expired Link. Try again.'
-        })
-      }
-      User.findOne({ resetPasswordLink }).exec((err, user) => {
-        if (err || !user) {
-          return res.status(400).json({
-            error: 'Invalid token. Try again.'
-          })
-        }
-
-        const updatedFields = {
-          password: newPassword,
-          resetPasswordLink: ''
-        }
-
-        user = _.extend(user, updatedFields)
-
-        user.save((err, result) => {
-          if (err) {
-            return res.status(400).json({
-              error: 'Password reset failed. Try again.'
-            })
-          }
-          res.json({
-            message: 'Great! Now you can login with your new password.'
-          })
-        })
-
-      })
-    })
-  }
-}
+//exports.forgotPassword = (req, res) => {
+//  const { email } = req.body
+//  // check if user exists with that email
+//  User.findOne({ email }).exec((err, user) => {
+//    if (err || !user) {
+//      return res.status(400).json({
+//        error: 'User with that email does not exist'
+//      });
+//    }
+//    // generate token and email to user 
+//    const token = jwt.sign({ name: user.name }, process.env.JWT_RESET_PASSWORD, { expiresIn: '10m' })
+//    // send email
+//    const forgot = forgotPasswordEmail(email, token)
+//
+//    // populate the db > user > resetPasswordLink
+//    return user.updateOne({ resetPasswordLink: token }, (err, success) => {
+//      if (err) {
+//        return res.status(400).json({
+//          error: 'Password reset failed. Try later.'
+//        })
+//      }
+//      sendgrid
+//        .send(forgot)
+//        .then((response) => {
+//          console.log(response[0].statusCode)
+//          console.log(response[0].headers)
+//          res.json({
+//            message: `Email has been sent to ${email}, Follow the instructions to reset your password`
+//          })
+//        })
+//        .catch((error) => {
+//          console.error(error)
+//          res.json({
+//            message: `We could not verify your email. Please try again`
+//          })
+//        })
+//    })
+//  })
+//};
+//
+//exports.resetPassword = (req, res) => {
+//  const { resetPasswordLink, newPassword } = req.body
+//  if (resetPasswordLink) {
+//    // check for expiry
+//    jwt.verify(resetPasswordLink, process.env.JWT_RESET_PASSWORD, (err, success) => {
+//      if (err) {
+//        return res.status(400).json({
+//          error: 'Expired Link. Try again.'
+//        })
+//      }
+//      User.findOne({ resetPasswordLink }).exec((err, user) => {
+//        if (err || !user) {
+//          return res.status(400).json({
+//            error: 'Invalid token. Try again.'
+//          })
+//        }
+//
+//        const updatedFields = {
+//          password: newPassword,
+//          resetPasswordLink: ''
+//        }
+//
+//        user = _.extend(user, updatedFields)
+//
+//        user.save((err, result) => {
+//          if (err) {
+//            return res.status(400).json({
+//              error: 'Password reset failed. Try again.'
+//            })
+//          }
+//          res.json({
+//            message: 'Great! Now you can login with your new password.'
+//          })
+//        })
+//
+//      })
+//    })
+//  }
+//}
