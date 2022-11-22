@@ -38,6 +38,26 @@
     background-position: center;
 }
 
+.beef{
+    background-image: url(../assets/images/meat.jpg);
+    background-size: 300px;
+    height: 20px;
+    width: 100%;
+    display: table;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cheese{
+    background-image: url(../assets/images/cheese.jpg);
+    background-size: 300px;
+    height: 20px;
+    width: 100%;
+    display: table;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .burgerContainer{
     height: 290px;
     width: 100%;
