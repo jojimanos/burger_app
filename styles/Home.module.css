@@ -12,13 +12,6 @@
   align-items: center;
 }
 
-.navbar {
-  columns: 4;
-  column-gap: 2rem;
-  padding: 4rem 0;
-
-}
-
 @media (max-width: 600px) {
   .grid {
     width: 100%;
