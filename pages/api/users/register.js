@@ -15,8 +15,9 @@ function register(req, res) {
         throw `User with the username "${user.name}" already exists`;
 
     // hash password
-    user.hash = bcrypt.hashSync(password, 10);    
+    user.hash = bcrypt.hashSync(password, 10);
 
-    usersRepo.create(user);
+    //usersRepo.create(user);
+    usersRepo.addUser(user);
     return res.status(200).json({});
 }

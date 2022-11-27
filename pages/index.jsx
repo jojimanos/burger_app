@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.css'
 import { useEffect, useState } from 'react'
 import AddRemoveComponent from './components/addRemoveComponent'
 import PlaceIngredient from './components/placeIngredient'
-import Navbar from './components/navbar/navbarBody'
 import Router from 'next/router'
 
 export default function Home() {
@@ -115,14 +114,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Navbar />
         <div className='burgerContainer'>
           <div className='burgerTop'></div>
           <div>{PlaceIngredient(lettuce, tomato, beef, cheese)}</div>
           <div className='burgerBottom'></div>
         </div>
         <form onSubmit={onSubmit}>
-          <div className='grid-rows-5 gap-1 border-2 border-yellow-400 bg-orange-600 p-4'>
+          <div className='grid-rows-5 gap-1 border-2 border-yellow-900 bg-amber-600 p-4 rounded-lg'>
             <div className='grid place-items-center'>
               <div className='text-center bg-green-500 m-1 border border-white w-16'>{`${lettuce * 1 + tomato * 2 + beef * 4 + cheese * 3}$`}</div>
             </div>

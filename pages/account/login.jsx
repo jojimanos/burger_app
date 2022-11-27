@@ -2,10 +2,11 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import Navbar from '../components/navbar/navbarBody';
 
 import Link from 'next/link';
 import { userService, alertService } from '../../services';
+
+import styles from '../../styles/Home.module.css'
 
 export default function Login() {
   const router = useRouter();
@@ -32,22 +33,23 @@ export default function Login() {
   }
 
   return (
-    <div>
-      <Navbar />
-      <div className='p-4 bg-blue-600'>Please complete the following registration form:</div>
-      <div className='grid grid-row-7 py-3 px-8 gap-3'>
-        <form className='grid grid-row-7 py-3 px-8 gap-3' onSubmit={handleSubmit(onSubmit)}>
-          <label>Name</label>
-          <input name="name" type="text" {...register('name')} />
-          <div>{errors.username?.message}</div>
-          <label>Password</label>
-          <input name="password" type="password" {...register('password')} />
-          <div>{errors.username?.message}</div>
-          <div className='grid  grid-cols-2 place-items-center'>
-            <button className="border-2 border-white p-2" disabled={formState.isSubmitting}>Login</button>
-            <Link href="/account/register" className="text-blue-500 hover:text-orange-600">Register</Link>
-          </div>
-        </form>
+    <div className={styles.container}>
+      <div className='bg-amber-100'>
+        <h1 className='text-center p-2 text-3xl bg-amber-700'>Burger Builder App</h1>
+        <div className='grid place-items-center text-center grid-row-7 py-3 px-8 gap-3'>
+          <form className='grid grid-row-3 py-3 gap-3' onSubmit={handleSubmit(onSubmit)}>
+            <label className='text-black font-bold'>Name</label>
+            <input name="name" type="text" {...register('name')} />
+            <div>{errors.username?.message}</div>
+            <label className='text-black font-bold'>Password</label>
+            <input name="password" type="password" {...register('password')} />
+            <div>{errors.username?.message}</div>
+            <div className='grid  grid-cols-2 place-items-center'>
+              <button className="border-2 border-black p-2 font-bold text-black" disabled={formState.isSubmitting}>Login</button>
+              <Link href="/account/register" className="text-black font-bold hover:text-orange-600">Register</Link>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   )

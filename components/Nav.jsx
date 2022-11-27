@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 
-import { NavLink } from '.';
+import Link from 'next/link';
 import { userService } from '../services/user-service';
 
-export function Nav() {
+import Button from './button';
+
+export default function Nav() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -17,14 +19,14 @@ export function Nav() {
 
     // only show nav when logged in
     if (!user) return null;
-    
+
     return (
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <div className="navbar-nav">
-                <NavLink href="/" exact className="nav-item nav-link">Home</NavLink>
-                <NavLink href="/users" className="nav-item nav-link">Users</NavLink>
-                <a onClick={logout} className="nav-item nav-link">Logout</a>
+        <div className='bg-amber-600'>
+            <div className="grid grid-cols-3 gap-2 py-5 px-3">
+                <Link href="/" exact>{Button("Home")}</Link>
+                <Link href="/">{Button("Orders")}</Link>
+                <a onClick={logout}>{Button("Logout")}</a>
             </div>
-        </nav>
+        </div>
     );
 }

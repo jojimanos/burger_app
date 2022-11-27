@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/account/registerPage.jsx", "pages/account/loginPage.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/account/registerPage.jsx", "pages/account/loginPage.jsx", "pages/index.ξsx"],
   "exclude": ["node_modules"]
 }

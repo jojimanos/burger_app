@@ -23,6 +23,9 @@ function authenticate(req, res) {
     const token = jwt.sign({ sub: user.id }, serverRuntimeConfig.secret, { expiresIn: '7d' });
 
     // return basic user details and token
+
+    usersRepo.getUsers()
+
     return res.status(200).json({
         id: user.id,
         name: user.name,
