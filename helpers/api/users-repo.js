@@ -30,21 +30,13 @@ export const usersRepo = {
 };
 
 function getUsers() {
-    //const [usersArray, setUsersArray] = useState([]);
+    let usersArray = []
     getDocs(dbInstance)
-            .then((data) => {
-                setNotesArray(data.docs.map((item) => {
-                    return { ...item.data(), id: item.id }
-                }));
-            })
-                //console.log(data)
-                //});
-            
-            
-            //let users = []
-            //console.log(usersArray)
-            //return users = usersArray
-    };
+            .then((data) => {console.log(data.docs.map((item) => {
+                return { ...item.data()}
+            }));
+        })
+}
 
 function addUser(user) {
     // generate new user id
