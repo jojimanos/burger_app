@@ -24,8 +24,6 @@ function authenticate(req, res) {
 
     // return basic user details and token
 
-    usersRepo.getUsers()
-
     return res.status(200).json({
         id: user.id,
         name: user.name,

@@ -18,6 +18,7 @@ function register(req, res) {
     user.hash = bcrypt.hashSync(password, 10);
 
     //usersRepo.create(user);
-    usersRepo.addUser(user);
+    //usersRepo.addUser(user); //Save in database
+    usersRepo.create(user);
     return res.status(200).json({});
 }
