@@ -53,12 +53,14 @@ export default function App({ Component, pageProps }: any) {
     return (
         <>
             <Head>
-                <title>Burger Builder App</title>
+                <title>Burger App</title>
+                <meta name="Burger App" content="Build and taste your favourite burger!!!" />
+                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <div>
                 <Alert />
-                <Nav/>
+                <Nav />
                 {authorized &&
                     <Component {...pageProps} />
                 }

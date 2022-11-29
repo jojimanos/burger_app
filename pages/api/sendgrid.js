@@ -25,10 +25,15 @@ async function Order(req, res) {
        <div class="img-container" style="display: flex;justify-content: center;align-items: center;border-radius: 5px;overflow: hidden; font-family: 'helvetica', 'ui-sans';">
              </div>
              <div class="container" style="margin-left: 20px;margin-right: 20px;">
-             <h3>Ypu have an order from ${req.body.fullname}, with e-mail: ✉️${req.body.email} and phone number ${req.body.phone}</h3>
+             <h3>You have an order from ${req.body.name}, phone number ${req.body.phone}, address ${req.body.address}, zipCode ${req.body.zipCode}</h3>
              <div style="font-size: 16px;">
              <p>Order</p>
-             <p>${req.body.message}</p>
+             <p>Lettuce ${req.body.lettuce}</p>
+             <p>Tomato ${req.body.tomato}</p>
+             <p>Beef ${req.body.beef}</p>
+             <p>Cheese ${req.body.cheese}</p>
+             <p>Price ${req.body.lettuce*1+req.body.tomato*2+req.body.beef*4+req.body.cheese*3}</p>
+             <p>Instructions ${req.body.instructions}</p>
              <br>
                </div>
        </body>

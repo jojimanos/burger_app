@@ -21,10 +21,10 @@ export default function Nav() {
     if (!user) return null;
 
     return (
-        <div className='bg-amber-600'>
+        <div className='bg-amber-700'>
             <div className="grid grid-cols-3 gap-2 py-5 px-3">
                 <Link href="/" exact>{Button("Home")}</Link>
-                <Link href="/">{Button("Orders")}</Link>
+                <div></div>
                 <a onClick={logout}>{Button("Logout")}</a>
             </div>
         </div>
