@@ -2,7 +2,7 @@ This project is a food ordering app, named Burger App, designed with Schwarzmull
 
 The project is done in [Next.js](https://nextjs.org/) and the UI is designed with [tailwind.css](https://tailwindcss.com/). 
 
-A user of this application can register and then login with the credentials he sumbited. He is then allowed to place an order of his liking. The order is then posted to an API and using the sendgrid email sender service it is sent to the owner of the app via email. 
+A user of this application can register and then login with the credentials he sumbited. He is then allowed to place an order of his liking. The order is then posted to an API and using the [sendgrid email sender service](https://sendgrid.com/) it is sent to the owner of the app via email. 
 
 In the current project the user's credentials are saved in a local json file. The following tutorial served as a model for this: [Next.js 11 - User Registration and Login Tutorial with Example App](https://jasonwatmore.com/post/2021/08/19/next-js-11-user-registration-and-login-tutorial-with-example-app)
 
@@ -23,3 +23,5 @@ npm run dev
 and open http://localhost:3000 in your browser to see the result.
 
 Before you can access the index.jsx page you will be redirected to the login and registration pages.
+
+To use the email sender service of [sendgrid see:](https://www.freecodecamp.org/news/how-to-build-a-working-contact-form-with-sendgrid-and-next-js/)
